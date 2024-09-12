@@ -11,5 +11,8 @@
   "dependencies": {
     "csv-parse": "^5.5.3",
     "underscore": "^1.13.6"
+  },
+  "devDependencies": {
+    "mocha": "^10.7.3"
   }
 }
