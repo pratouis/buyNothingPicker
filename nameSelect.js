@@ -1,17 +1,27 @@
-var _ = import('underscore');
-var nameKey = new Map();
+var { uniq } = import('underscore');
+import { duplicateNam, noName } from './strings';
 
-export function drawNames(keynames) {
-    let names = [];
-    _.each(keynames, function(key) {
-        let entryCount = nameKey.get(key);
-        if(entryCount != undefined) {
-            names.push(...new Array(entryCount).fill(key));
+export const addNames = ((nameMap, names) => {
+    names.forEach((nameVal) => {
+        if (nameMap.has(nameVal)) {
+            throw new Error(duplicateName);
         } else {
-            console.log('ERROR: could not find name ' + key);
+            nameMap.set(nameVal, []);
         }
-    })
-    names = _.shuffle(names);
-    let idx = Math.floor(Math.random()*names.length);
-    return names[idx];
-}
+    });
+});
+
+export const addItems = ((nameMap, nameKey, items) => {
+    if (nameMap.has(nameKey)) {
+        const currItems = nameMap.get(nameKey);
+        // TODO: improved efficiency
+        const newItems = [...currItems, ...items];
+        nameMap.set(nameKey, uniq(newItems));
+    } else {
+        throw new Error(noName);
+    }
+});
+
+export const pickNameForItem = ((nameMap, itemNo) => {
+    
+});
