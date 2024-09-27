@@ -14,5 +14,6 @@
   },
   "devDependencies": {
     "mocha": "^10.7.3"
-  }
+  },
+  "type": "module"
 }

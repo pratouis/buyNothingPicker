@@ -1,7 +1,7 @@
-var { uniq } = import('underscore');
-import { duplicateNam, noName } from './strings';
+const { uniq } = import('underscore');
+const { duplicateName, noName } = import('./strings.json');
 
-export const addNames = ((nameMap, names) => {
+const addNames = ((nameMap, names) => {
     names.forEach((nameVal) => {
         if (nameMap.has(nameVal)) {
             throw new Error(duplicateName);
@@ -11,7 +11,7 @@ export const addNames = ((nameMap, names) => {
     });
 });
 
-export const addItems = ((nameMap, nameKey, items) => {
+const addItems = ((nameMap, nameKey, items) => {
     if (nameMap.has(nameKey)) {
         const currItems = nameMap.get(nameKey);
         // TODO: improved efficiency
@@ -22,6 +22,12 @@ export const addItems = ((nameMap, nameKey, items) => {
     }
 });
 
-export const pickNameForItem = ((nameMap, itemNo) => {
+const pickNameForItem = ((nameMap, itemNo) => {
     
 });
+
+module.exports = {
+    addItems,
+    addNames,
+    pickNameForItem
+};

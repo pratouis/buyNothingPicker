@@ -1,5 +1,5 @@
-const { addNames } = require('../nameSelect.js');
-const { names1, names2 } = require('./data.json');
+const { addNames } = require('../nameSelect');
+const { names1, names2 } = import('./data.json');
 
 const assert = require('assert');
 
